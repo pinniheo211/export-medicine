@@ -17,14 +17,17 @@ const MENU_OPTIONS = [
   {
     label: 'Home',
     icon: 'eva:home-fill',
+    link: '/',
   },
   {
     label: 'Profile',
     icon: 'eva:person-fill',
+    link: '/profile',
   },
   {
     label: 'Settings',
     icon: 'eva:settings-2-fill',
+    link: '/setting',
   },
 ];
 
@@ -40,6 +43,8 @@ export default function AccountPopover() {
   const handleClose = () => {
     setOpen(null);
   };
+
+  console.log(MENU_OPTIONS);
 
   return (
     <>
@@ -96,7 +101,7 @@ export default function AccountPopover() {
 
         {MENU_OPTIONS.map((option) => (
           <MenuItem key={option.label} onClick={handleClose}>
-            {option.label}
+            <a href={option?.link}>{option.label}</a>
           </MenuItem>
         ))}
 
@@ -108,7 +113,7 @@ export default function AccountPopover() {
           onClick={handleClose}
           sx={{ typography: 'body2', color: 'error.main', py: 1.5 }}
         >
-          Logout
+          <a href="/login">Logout</a>
         </MenuItem>
       </Popover>
     </>
